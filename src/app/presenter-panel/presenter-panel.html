@@ -1,0 +1,21 @@
+@if (selectedPresenter) {
+  <div>
+    <h2>Présentateur.rice : {{ selectedPresenter.prenom }} {{ selectedPresenter.nom }}</h2>
+    <p>Age : {{ selectedPresenter.age }}</p>
+    <p>OS : {{ selectedPresenter.os }}</p>
+    <button (click)="clearPresenter()">Arrêter la présentation</button>
+  </div>
+}
+@else {
+  <button (click)="toggleMenu()">Présentateur.rice</button>
+
+  @if (menuOpen) {
+    <ul>
+      @for (user of users; track user.nom) {
+      <li>
+        <button (click)="selectPresenter(user)">{{ user.prenom }} {{ user.nom }}</button>
+      </li>
+      }
+    </ul>
+  }
+}
